@@ -46,7 +46,7 @@
         <Button
             android:id="@+id/falseButton"
             android:layout_width="wrap_content"
-            android:layout_height="35dp"
+            android:layout_height="48dp"
             android:onClick="onFalseButtonClick"
             android:text="Button"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
