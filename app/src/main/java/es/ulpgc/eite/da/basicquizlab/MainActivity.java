@@ -107,7 +107,9 @@ public class MainActivity extends AppCompatActivity {
     replyText.setText(R.string.empty_text);
   }
   public void enableButtons (){
-
+    trueButton.setOnClickListener();
+    falseButton.setOnClickListener();
+    nextButton.setOnClickListener();
   }
 
 
