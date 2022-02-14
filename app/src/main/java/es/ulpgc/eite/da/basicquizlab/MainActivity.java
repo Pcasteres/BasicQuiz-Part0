@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     linkLayoutComponents();
 
     initLayoutContent();
+    enableButtons();
   }
 
   // metodo para cargar los datos de pantalla
@@ -67,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     if(replyArray[questionIndex] == 1) {
       // correct
       replyText.setText(R.string.correct_text);
+
     } else {
       // incorrect
       replyText.setText(R.string.incorrect_text);
@@ -103,6 +105,26 @@ public class MainActivity extends AppCompatActivity {
     //TODO: refactorizar en un método este codigo repetido
     questionText.setText(questionArray[questionIndex]);
     replyText.setText(R.string.empty_text);
+  }
+  public void enableButtons (){
+    trueButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+    falseButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
+    nextButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+
+      }
+    });
   }
 
 
