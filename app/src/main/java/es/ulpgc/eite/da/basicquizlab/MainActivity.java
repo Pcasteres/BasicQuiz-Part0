@@ -68,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
     if(replyArray[questionIndex] == 1) {
       // correct
       replyText.setText(R.string.correct_text);
-
     } else {
       // incorrect
       replyText.setText(R.string.incorrect_text);
@@ -85,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
       // incorrect
       replyText.setText(R.string.incorrect_text);
     }
+
   }
 
 
@@ -102,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
       questionIndex=0;
     }
 
+
     //TODO: refactorizar en un método este codigo repetido
     questionText.setText(questionArray[questionIndex]);
     replyText.setText(R.string.empty_text);
@@ -111,19 +112,19 @@ public class MainActivity extends AppCompatActivity {
     trueButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        onTrueButtonClick(v);
       }
   });
     falseButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        onFalseButtonClick(v);
       }
     });
     nextButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-
+        onNextButtonClick(v);
       }
     });
   }
