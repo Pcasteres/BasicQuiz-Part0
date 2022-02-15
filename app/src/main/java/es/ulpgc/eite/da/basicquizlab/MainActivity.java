@@ -107,12 +107,13 @@ public class MainActivity extends AppCompatActivity {
     replyText.setText(R.string.empty_text);
   }
   public void enableButtons (){
+    //no entiendo por qué se pone View
     trueButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
 
       }
-    });
+  });
     falseButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
