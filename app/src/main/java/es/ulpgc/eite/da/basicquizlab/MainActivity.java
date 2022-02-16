@@ -16,19 +16,20 @@ public class MainActivity extends AppCompatActivity {
   private String[] questionArray;
   private int questionIndex = 0;
   private int[] replyArray;
-  private Boolean trueButtonClicked;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-    trueButtonClicked = savedInstanceState.getBoolean();
+
     initLayoutData();
     linkLayoutComponents();
 
     initLayoutContent();
-    //enableButtons();
+   //enableButtonTrue();
+    //enableButtonFalse();
   }
 
   // metodo para cargar los datos de pantalla
@@ -42,9 +43,14 @@ public class MainActivity extends AppCompatActivity {
 
   private void linkLayoutComponents() {
     falseButton = findViewById(R.id.falseButton);
+    falseButton.setEnabled(true);
     trueButton = findViewById(R.id.trueButton);
-    cheatButton = findViewById(R.id.cheatButton);
+    trueButton.setEnabled(true);
     nextButton = findViewById(R.id.nextButton);
+    nextButton.setEnabled(false);
+
+    cheatButton = findViewById(R.id.cheatButton);
+
 
     questionText = findViewById(R.id.questionText);
     replyText = findViewById(R.id.replyText);
@@ -60,45 +66,45 @@ public class MainActivity extends AppCompatActivity {
     //TODO: refactorizar en un método este codigo repetido
     questionText.setText(questionArray[questionIndex]);
     replyText.setText(R.string.empty_text);
-
   }
-
 
   //TODO: impedir que podamos hacer click en el boton
   // si ya hemos contestado a la pregunta
   public void onTrueButtonClick(View view) {
-   if(trueButtonClicked) {
      if (replyArray[questionIndex] == 1) {
        // correct
        replyText.setText(R.string.correct_text);
+       falseButton.setEnabled(false);
+       nextButton.setEnabled(true);
      } else {
        // incorrect
        replyText.setText(R.string.incorrect_text);
-     }
    }
 
   }
   //TODO: impedir que podamos hacer click en el boton
   // si ya hemos contestado a la pregunta
   public void onFalseButtonClick(View view) {
-    if(!trueButtonClicked) {
       if (replyArray[questionIndex] == 0) {
         // correct
         replyText.setText(R.string.correct_text);
+        trueButton.setEnabled(false);
+        nextButton.setEnabled(true);
       } else {
         // incorrect
         replyText.setText(R.string.incorrect_text);
       }
-    }
+
+
   }
-
-
 
   //TODO: impedir que podamos hacer click en el boton
   // si aun no hemos contestado a la pregunta
   public void onNextButtonClick(View view) {
+    initLayoutData();
     questionIndex++;
-
+    //onTrueButtonClick(view);
+    //onFalseButtonClick(view);
     // hacemos que si llegamos al final del quiz
     // volvamos a empezarlo nuevamente
     //TODO: refactorizar en un método este codigo
@@ -113,32 +119,39 @@ public class MainActivity extends AppCompatActivity {
     replyText.setText(R.string.empty_text);
   }
 
- /* public void enableButtons (){
-    //no entiendo por qué se pone View
+ /* public void enableButtonTrue (){
+
     trueButton.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        onTrueButtonClick(v);
-      }
-  });
-    falseButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onFalseButtonClick(v);
-      }
-    });
-    nextButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onNextButtonClick(v);
+        falseButton.setEnabled(false);
       }
     });
   }
 
 
-  /*
+    public void enableButtonFalse() {
+      falseButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          trueButton.setEnabled(false);
+        }
+      });
+    }
 
-  //TODO: en vez de usar un metodo para cada boton, podemos
+   nextButton.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        onNextButtonClick(v);
+
+      }
+    });*/
+
+
+
+
+
+ /* //TODO: en vez de usar un metodo para cada boton, podemos
   // hacerlo usando un solo metodo para todos los botones
   public void onButtonClick(View view) {
 
@@ -161,5 +174,5 @@ public class MainActivity extends AppCompatActivity {
     // no implementado
   }
   */
-
 }
+
