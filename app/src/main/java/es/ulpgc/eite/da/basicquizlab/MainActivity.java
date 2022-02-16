@@ -28,8 +28,6 @@ public class MainActivity extends AppCompatActivity {
     linkLayoutComponents();
 
     initLayoutContent();
-   //enableButtonTrue();
-    //enableButtonFalse();
   }
 
   // metodo para cargar los datos de pantalla
@@ -74,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
      if (replyArray[questionIndex] == 1) {
        // correct
        replyText.setText(R.string.correct_text);
-       falseButton.setEnabled(false);
+
+      falseButton.setEnabled(false);
        nextButton.setEnabled(true);
      } else {
        // incorrect
@@ -101,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
   //TODO: impedir que podamos hacer click en el boton
   // si aun no hemos contestado a la pregunta
   public void onNextButtonClick(View view) {
+    //Hay que guardar el estado anterior para pasar de pantalla
     initLayoutData();
     questionIndex++;
     //onTrueButtonClick(view);
@@ -119,33 +119,8 @@ public class MainActivity extends AppCompatActivity {
     replyText.setText(R.string.empty_text);
   }
 
- /* public void enableButtonTrue (){
-
-    trueButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        falseButton.setEnabled(false);
-      }
-    });
-  }
-
-
-    public void enableButtonFalse() {
-      falseButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          trueButton.setEnabled(false);
-        }
-      });
     }
 
-   nextButton.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onNextButtonClick(v);
-
-      }
-    });*/
 
 
 
@@ -174,5 +149,6 @@ public class MainActivity extends AppCompatActivity {
     // no implementado
   }
   */
-}
+
+
 
