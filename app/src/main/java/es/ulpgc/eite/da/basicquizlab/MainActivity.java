@@ -9,31 +9,34 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-  private Button falseButton, trueButton,cheatButton, nextButton;
+
+  private Button falseButton, trueButton, cheatButton, nextButton;
   private TextView questionText, replyText;
 
   private String[] questionArray;
-  private int questionIndex=0;
+  private int questionIndex = 0;
   private int[] replyArray;
+  private Boolean trueButtonClicked;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    trueButtonClicked = savedInstanceState.getBoolean();
     initLayoutData();
     linkLayoutComponents();
 
     initLayoutContent();
-    enableButtons();
+    //enableButtons();
   }
 
   // metodo para cargar los datos de pantalla
   private void initLayoutData() {
     // preguntas cuestionario cargadas desde fichero de recursos
-    questionArray=getResources().getStringArray(R.array.question_array);
+    questionArray = getResources().getStringArray(R.array.question_array);
     // respuestas cuestionario cargadas desde fichero de recursos
-    replyArray=getResources().getIntArray(R.array.reply_array);
+    replyArray = getResources().getIntArray(R.array.reply_array);
   }
 
 
@@ -46,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
     questionText = findViewById(R.id.questionText);
     replyText = findViewById(R.id.replyText);
   }
-
 
 
   private void initLayoutContent() {
@@ -65,26 +67,29 @@ public class MainActivity extends AppCompatActivity {
   //TODO: impedir que podamos hacer click en el boton
   // si ya hemos contestado a la pregunta
   public void onTrueButtonClick(View view) {
-    if(replyArray[questionIndex] == 1) {
-      // correct
-      replyText.setText(R.string.correct_text);
-    } else {
-      // incorrect
-      replyText.setText(R.string.incorrect_text);
-    }
-  }
+   if(trueButtonClicked) {
+     if (replyArray[questionIndex] == 1) {
+       // correct
+       replyText.setText(R.string.correct_text);
+     } else {
+       // incorrect
+       replyText.setText(R.string.incorrect_text);
+     }
+   }
 
+  }
   //TODO: impedir que podamos hacer click en el boton
   // si ya hemos contestado a la pregunta
   public void onFalseButtonClick(View view) {
-    if(replyArray[questionIndex] == 0) {
-      // correct
-      replyText.setText(R.string.correct_text);
-    } else {
-      // incorrect
-      replyText.setText(R.string.incorrect_text);
+    if(!trueButtonClicked) {
+      if (replyArray[questionIndex] == 0) {
+        // correct
+        replyText.setText(R.string.correct_text);
+      } else {
+        // incorrect
+        replyText.setText(R.string.incorrect_text);
+      }
     }
-
   }
 
 
@@ -107,7 +112,8 @@ public class MainActivity extends AppCompatActivity {
     questionText.setText(questionArray[questionIndex]);
     replyText.setText(R.string.empty_text);
   }
-  public void enableButtons (){
+
+ /* public void enableButtons (){
     //no entiendo por qué se pone View
     trueButton.setOnClickListener(new View.OnClickListener() {
       @Override
