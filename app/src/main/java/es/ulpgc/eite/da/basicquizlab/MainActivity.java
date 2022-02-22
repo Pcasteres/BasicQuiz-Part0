@@ -100,8 +100,7 @@ public class MainActivity extends AppCompatActivity {
   //TODO: impedir que podamos hacer click en el boton
   // si aun no hemos contestado a la pregunta
   public void onNextButtonClick(View view) {
-    //Hay que guardar el estado anterior para pasar de pantalla
-    initLayoutData();
+
     questionIndex++;
     //onTrueButtonClick(view);
     //onFalseButtonClick(view);
